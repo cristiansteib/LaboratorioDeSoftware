@@ -9,11 +9,19 @@ public class Estudiante {
     public String toString() {
         StringBuffer concatenacion = new StringBuffer("");
         concatenacion.append(this.nombre);
+        concatenacion.append(" ");
         concatenacion.append(this.apellido);
+        concatenacion.append(" ");
         concatenacion.append(this.legajo);
         return concatenacion.toString();
     }
-
+        
+    @Override
+    public boolean equals(Object arg0) {
+    	Estudiante e = (Estudiante) arg0;
+    	return (e.getLegajo() == this.getLegajo());
+    }
+    
     public String getApellido() {
         return apellido;
     }
@@ -38,11 +46,5 @@ public class Estudiante {
         this.legajo = legajo;
     }
 
-    public static void main(String[] args) {
-        Estudiante e = new Estudiante();
-        e.setNombre("juan");
-        e.setApellido("morales");
-        e.setLegajo("123123");
-        System.out.println(e);
-    }
+ 
 }
