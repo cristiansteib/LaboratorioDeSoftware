@@ -2,11 +2,9 @@ package laboratorio;
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
-
-
 public class LaboRobot extends JuniorRobot
 {
-	private RobotStrategy laboRobotStrategyImpl = null;
+	private RobotStrategy laboRobotStrategyImpl = new DummyStrategy();
 
 	private RobotStrategy getRobotStrategy() {
 		return laboRobotStrategyImpl;
