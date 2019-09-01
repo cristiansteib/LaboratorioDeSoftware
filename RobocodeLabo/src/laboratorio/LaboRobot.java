@@ -24,7 +24,7 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onScannedRobot() {
-		this.getRobotStrategy().fire(this);
+		this.getRobotStrategy().onScannedRobot(this);
 	}
 
 	/**

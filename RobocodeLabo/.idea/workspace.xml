@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b47a148-c0a3-43a8-9174-76991498b723" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laboratorio/DummyStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/DummyStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/laboratorio/LaboRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/LaboRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laboratorio/RobotStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/RobotStrategy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +60,7 @@
       <updated>1567024544065</updated>
       <workItem from="1567024547742" duration="1763000" />
       <workItem from="1567026526842" duration="697000" />
+      <workItem from="1567377979560" duration="1898000" />
     </task>
     <servers />
   </component>
@@ -70,7 +72,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -81,8 +85,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/laboratorio/RobotStrategy.java</url>
-          <line>4</line>
-          <properties class="laboratorio.RobotStrategy" method="onScannedRobot">
+          <line>5</line>
+          <properties class="laboratorio.RobotStrategy">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />

@@ -1,9 +1,13 @@
 package laboratorio;
 
 public interface RobotStrategy {
-    void run(LaboRobot robot);
-    void onScannedRobot(LaboRobot robot);
-    void onHitByBullet(LaboRobot robot);
-    void fire(LaboRobot robot);
-    void onHitWall(LaboRobot robot);
+    abstract void run(LaboRobot robot);
+
+    abstract void onScannedRobot(LaboRobot robot);
+
+    abstract void onHitByBullet(LaboRobot robot);
+
+    abstract void fire(LaboRobot robot);
+
+    abstract void onHitWall(LaboRobot robot);
 }

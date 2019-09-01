@@ -7,7 +7,13 @@ class DummyStrategy implements RobotStrategy{
     }
 
     public void onScannedRobot(LaboRobot robot){
-        robot.fire(1);
+        robot.turnGunTo(robot.scannedAngle);
+        robot.fire ((robot.scannedDistance < 50 && robot.energy > 50) ? 3 : 1 );
+        robot.back(10);
+    }
+
+    private void moveWithoutCrash(LaboRobot robot){
+
     }
 
     public void onHitByBullet(LaboRobot robot){
