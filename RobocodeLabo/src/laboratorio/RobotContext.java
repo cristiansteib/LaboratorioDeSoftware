@@ -2,7 +2,7 @@ package laboratorio;
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
-public class ContextRobot  implements RobotInterface
+public class RobotContext implements RobotInterface
 {
 	private RobotStrategyInterface strategy = new CrazyStrategy();
 
