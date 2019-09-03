@@ -30,8 +30,8 @@ public class RobotContext implements RobotInterface
 	}
 
 	@Override
-	public void onHitByBullet() {
-		this.getRobotStrategy().onHitByBullet();
+	public void onHitByBullet(HitByBulletEvent e) {
+		this.getRobotStrategy().onHitByBullet(e);
 	}
 
 	@Override

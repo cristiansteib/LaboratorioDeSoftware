@@ -1,5 +1,6 @@
 package laboratorio;
 
+import robocode.HitByBulletEvent;
 import robocode.HitRobotEvent;
 import robocode.ScannedRobotEvent;
 
@@ -8,8 +9,7 @@ public interface RobotInterface {
 
     void onScannedRobot(ScannedRobotEvent e);
     void onHitRobot(HitRobotEvent e) ;
-    void onHitByBullet();
-
+    void onHitByBullet(HitByBulletEvent e);
     void fire();
     void onHitWall();
 }

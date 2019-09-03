@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b47a148-c0a3-43a8-9174-76991498b723" name="Default Changelist" comment="" />
+    <list default="true" id="7b47a148-c0a3-43a8-9174-76991498b723" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laboratorio/CrazyStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/CrazyStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laboratorio/RobotContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/RobotContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laboratorio/RobotInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laboratorio/RobotInterface.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +60,8 @@
       <updated>1567024544065</updated>
       <workItem from="1567024547742" duration="1763000" />
       <workItem from="1567026526842" duration="697000" />
-      <workItem from="1567377979560" duration="4170000" />
+      <workItem from="1567377979560" duration="4656000" />
+      <workItem from="1567470098079" duration="349000" />
     </task>
     <servers />
   </component>

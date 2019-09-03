@@ -4,8 +4,11 @@ import robocode.*;
 
 import java.awt.*;
 
+import static robocode.util.Utils.normalRelativeAngleDegrees;
+
 public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterface {
     boolean movingForward;
+    private int dist = 50; // distance to move when we're hit
 
     public void run() {
         // Set colors
@@ -68,12 +71,28 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
      * onScannedRobot:  Fire!
      */
     public void onScannedRobot(ScannedRobotEvent e) {
-        fire(1);
+        // If the other robot is close by, and we have plenty of life,
+        // fire hard!
+        if (e.getDistance() < 50 && getEnergy() > 50) {
+            fire(3);
+        } // otherwise, fire 1.
+        else {
+            fire(1);
+        }
+        // Call scan again, before we turn the gun
+        scan();
     }
 
+    /**
+     * onHitByBullet:  Turn perpendicular to the bullet, and move a bit.
+     */
     @Override
-    public void onHitByBullet() {
+    public void onHitByBullet(HitByBulletEvent e) {
+        turnRight(normalRelativeAngleDegrees(90 - (getHeading() - e.getHeading())));
 
+        ahead(dist);
+        dist *= -1;
+        scan();
     }
 
     @Override
