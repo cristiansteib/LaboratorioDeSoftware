@@ -35,13 +35,8 @@ public class RobotContext implements RobotInterface
 	}
 
 	@Override
-	public void fire() {
-		this.getRobotStrategy().fire();
-	}
-
-	@Override
-	public void onHitWall() {
-		this.getRobotStrategy().onHitWall();
+	public void onHitWall(HitWallEvent e) {
+		this.getRobotStrategy().onHitWall(e);
 	}
 
 }
