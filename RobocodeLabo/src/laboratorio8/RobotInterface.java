@@ -1,4 +1,4 @@
-package laboratorio;
+package laboratorio8;
 
 import robocode.HitByBulletEvent;
 import robocode.HitRobotEvent;

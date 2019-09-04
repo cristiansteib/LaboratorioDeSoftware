@@ -1,17 +1,22 @@
-package laboratorio;
+package laboratorio8;
 import robocode.*;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
-public class RobotContext implements RobotInterface
+public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 {
-	private RobotStrategyInterface strategy = new CrazyStrategy();
+	private RobotStrategy strategy;
 
-	private RobotStrategyInterface getRobotStrategy() {
+	public LaboRobot8(){
+		this.setStrategy(new FailedStrategy());
+	}
+
+	private RobotStrategy getRobotStrategy() {
 		return strategy;
 	}
 
-	public void setStrategy(RobotStrategyInterface strategy) {
+	public void setStrategy(RobotStrategy strategy) {
 		this.strategy = strategy;
+		this.strategy.init(this);
 	}
 
 	@Override

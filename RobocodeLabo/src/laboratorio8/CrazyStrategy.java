@@ -1,4 +1,4 @@
-package laboratorio;
+package laboratorio8;
 
 import robocode.*;
 
@@ -7,25 +7,28 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
-public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterface {
+public class FailedStrategy extends RobotStrategy  {
     boolean movingForward;
     private int dist = 50; // distance to move when we're hit
 
     public void run() {
         // Set colors
-        setBodyColor(new Color(200, 197, 0));
-        setGunColor(new Color(150, 0, 1));
-        setRadarColor(new Color(0, 24, 100));
-        setBulletColor(new Color(255, 251, 249));
-        setScanColor(new Color(27, 255, 8));
+
+        double height =  this.robot.getBattleFieldHeight();
+        double width =  this.robot.getBattleFieldWidth();
+        this.robot.setBodyColor(new Color(200, 197, 0));
+        this.robot.setGunColor(new Color(150, 0, 1));
+        this.robot.setRadarColor(new Color(0, 24, 100));
+        this.robot.setBulletColor(new Color(255, 251, 249));
+        this.robot.setScanColor(new Color(27, 255, 8));
 
         // Loop forever
         while (true) {
             // Tell the game we will want to move ahead 40000 -- some large number
-            setAhead(40000);
+            this.robot.setAhead(40000);
             movingForward = true;
             // Tell the game we will want to turn right 90
-            setTurnRight(90);
+            this.robot.setTurnRight(90);
             // At this point, we have indicated to the game that *when we do something*,
             // we will want to move ahead and turn right.  That's what "set" means.
             // It is important to realize we have not done anything yet!
@@ -35,16 +38,16 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
             // It will not return until we have finished turning.
             int randomNum = ThreadLocalRandom.current().nextInt(20, 180);
 
-            waitFor(new TurnCompleteCondition(this));
+            this.robot.waitFor(new TurnCompleteCondition(this.robot));
             // Note:  We are still moving ahead now, but the turn is complete.
             // Now we'll turn the other way...
-            setTurnLeft(randomNum);
+            this.robot.setTurnLeft(randomNum);
             // ... and wait for the turn to finish ...
-            waitFor(new TurnCompleteCondition(this));
+            this.robot.waitFor(new TurnCompleteCondition(this.robot));
             // ... then the other way ...
-            setTurnRight(randomNum);
+            this.robot.setTurnRight(randomNum);
             // .. and wait for that turn to finish.
-            waitFor(new TurnCompleteCondition(this));
+            this.robot.waitFor(new TurnCompleteCondition(this.robot));
             // then back to the top to do it all again
         }
     }
@@ -57,10 +60,10 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
         int randomNum = ThreadLocalRandom.current().nextInt(2000, 10000 + 1);
 
         if (movingForward) {
-            setBack(randomNum);
+            this.robot.setBack(randomNum);
             movingForward = false;
         } else {
-            setAhead(randomNum);
+            this.robot.setAhead(randomNum);
             movingForward = true;
         }
     }
@@ -71,20 +74,20 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
     public void onScannedRobot(ScannedRobotEvent e) {
         // If the other robot is close by, and we have plenty of life,
         // fire hard!
-        if (e.getDistance() < 35 && getEnergy() > 55) {
-            fire(3);
+        if (e.getDistance() < 35 &&  this.robot.getEnergy() > 55) {
+            this.robot.fire(3);
         } // otherwise, fire 1.
-        else if (e.getDistance() < 50 && getEnergy() > 80){
-            fire(1);
-        } else if (e.getDistance() < 15 && getEnergy() < 20){
-            fire(3);
+        else if (e.getDistance() < 50 &&  this.robot.getEnergy() > 80){
+            this.robot.fire(1);
+        } else if (e.getDistance() < 15 &&  this.robot.getEnergy() < 20){
+            this.robot.fire(3);
         } else {
-            fire(1);
+            this.robot.fire(1);
         }
 
 
         // Call scan again, before we turn the gun
-        scan();
+        this.robot.scan();
     }
 
     /**
@@ -92,11 +95,11 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
      */
     @Override
     public void onHitByBullet(HitByBulletEvent e) {
-        turnRight(normalRelativeAngleDegrees(90 - (getHeading() - e.getHeading())));
+        this.robot.turnRight(normalRelativeAngleDegrees(90 - ( this.robot.getHeading() - e.getHeading())));
 
-        ahead(dist);
+        this.robot.ahead(dist);
         dist *= -1;
-        scan();
+        this.robot.scan();
     }
 
 
@@ -110,10 +113,10 @@ public class CrazyStrategy extends AdvancedRobot implements RobotStrategyInterfa
      * onHitRobot:  Back up!
      */
     public void onHitRobot(HitRobotEvent e) {
-        double turnGunAmt = normalRelativeAngleDegrees(e.getBearing() + getHeading() - getGunHeading());
+        double turnGunAmt = normalRelativeAngleDegrees(e.getBearing() +  this.robot.getHeading() -  this.robot.getGunHeading());
 
-        turnGunRight(turnGunAmt);
-        fire(3);
+        this.robot.turnGunRight(turnGunAmt);
+        this.robot.fire(3);
     }
 
 }

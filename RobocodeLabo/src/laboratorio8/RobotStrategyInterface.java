@@ -1,6 +1,4 @@
-package laboratorio;
-
-import robocode.ScannedRobotEvent;
+package laboratorio8;
 
 public interface RobotStrategyInterface extends RobotInterface {
 
