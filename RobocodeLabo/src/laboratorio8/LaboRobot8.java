@@ -4,23 +4,36 @@ import robocode.*;
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/JuniorRobot.html
 public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 {
-	private RobotStrategy strategy;
+	private Estratega estratega = new Estratega();
 
-	public LaboRobot8(){
-		this.setStrategy(new FailedStrategy());
+	private  class Estratega {
+		private RobotStrategy strategy;
+
+		void update() {
+			this.setStrategy(new FailedStrategy());
+		}
+
+		void setStrategy(RobotStrategy strategy) {
+			this.strategy = strategy;
+			this.strategy.init(LaboRobot8.this);
+		}
+
+		RobotStrategy getStrategy() {
+			return this.strategy;
+		}
+	}
+
+	public LaboRobot8() {
+
 	}
 
 	private RobotStrategy getRobotStrategy() {
-		return strategy;
-	}
-
-	public void setStrategy(RobotStrategy strategy) {
-		this.strategy = strategy;
-		this.strategy.init(this);
+		return this.estratega.getStrategy();
 	}
 
 	@Override
 	public void run() {
+		this.estratega.update();
 		this.getRobotStrategy().run();
 	}
 
@@ -43,5 +56,4 @@ public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 	public void onHitWall(HitWallEvent e) {
 		this.getRobotStrategy().onHitWall(e);
 	}
-
 }
