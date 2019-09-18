@@ -9,7 +9,7 @@ import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 public class FailedStrategy extends RobotStrategy {
 
-
+    /*
     private static FailedStrategy instance = null;
 
     private FailedStrategy (){
@@ -24,7 +24,7 @@ public class FailedStrategy extends RobotStrategy {
             return instance;
         }
     }
-
+*/
     boolean movingForward;
     private int dist = 50; // distance to move when we're hit
 

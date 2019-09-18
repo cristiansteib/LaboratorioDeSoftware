@@ -12,7 +12,7 @@ public class CircleStrategy extends RobotStrategy {
 
 
 
-
+    /*
     private static CircleStrategy instance = null;
 
     private CircleStrategy (){
@@ -27,7 +27,7 @@ public class CircleStrategy extends RobotStrategy {
             return instance;
         }
     }
-
+*/
     public void run() {
 
         this.robot.setTurnRight(100);
