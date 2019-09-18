@@ -14,11 +14,9 @@ public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 
 		void update() {
 			if (getEnergy() < 80) {
-				this.setStrategy(new CircleStrategy());
-				//this.setStrategy(CircleStrategy.getInstance());
+				this.setStrategy(CircleStrategy.getInstance());
 			}else {
-				this.setStrategy(new FailedStrategy());
-				//this.setStrategy(FailedStrategy.getInstance());
+				this.setStrategy(FailedStrategy.getInstance());
 			}
 		}
 
