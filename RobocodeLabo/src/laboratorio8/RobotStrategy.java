@@ -6,20 +6,22 @@ import robocode.AdvancedRobot;
 public abstract class RobotStrategy implements RobotInterface{
 
     protected AdvancedRobot robot;
-/*
+
     private static RobotStrategy instance = null;
 
-    protected static RobotStrategy getInstance() {
+    static RobotStrategy getInstance(AdvancedRobot robot)  {
         if (instance == null) {
             Class clazz = sun.reflect.Reflection.getCallerClass(1);
-            return clazz.newInstance();
+            RobotStrategy instance = (RobotStrategy) clazz.newInstance();
+            instance.init(robot);
+            return instance;
         } else {
             return instance;
         }
     }
-    */
 
-    public void init(AdvancedRobot robot) {
+
+    void init(AdvancedRobot robot) {
         this.robot = robot;
     }
 }
