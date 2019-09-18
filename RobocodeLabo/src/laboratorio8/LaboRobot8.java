@@ -12,22 +12,23 @@ public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 
 		private RobotStrategy strategy;
 
-		void update() {
+		private void update() {
 			if (getEnergy() < 80) {
-				this.setStrategy(new CircleStrategy());
-				//this.setStrategy(CircleStrategy.getInstance());
+				//this.setStrategy(new ircleStrategy());
+				this.setStrategy(CircleStrategy.getInstance());
 			}else {
-				this.setStrategy(new FailedStrategy());
-				//this.setStrategy(FailedStrategy.getInstance());
+				//this.setStrategy(new FailedStrategy());
+				this.setStrategy(FailedStrategy.getInstance());
 			}
 		}
 
-		void setStrategy(RobotStrategy strategy) {
+		private void setStrategy(RobotStrategy strategy) {
 			this.strategy = strategy;
 			this.strategy.init(LaboRobot8.this);
 		}
 
 		RobotStrategy getStrategy() {
+			update();
 			return this.strategy;
 		}
 	}
@@ -43,33 +44,26 @@ public class LaboRobot8 extends AdvancedRobot implements RobotInterface
 		this.setRadarColor(new Color(0, 24, 100));
 		this.setBulletColor(new Color(255, 251, 249));
 		this.setScanColor(new Color(27, 255, 8));
-		this.estratega.update();
 		this.getRobotStrategy().run();
 	}
 
 	@Override
 	public void onScannedRobot(ScannedRobotEvent e) {
-		this.estratega.update();
-
 		this.getRobotStrategy().onScannedRobot(e);
 	}
 
 	@Override
 	public void onHitRobot(HitRobotEvent e) {
-		this.estratega.update();
-
 		this.getRobotStrategy().onHitRobot(e);
 	}
 
 	@Override
 	public void onHitByBullet(HitByBulletEvent e) {
-		this.estratega.update();
 		this.getRobotStrategy().onHitByBullet(e);
 	}
 
 	@Override
 	public void onHitWall(HitWallEvent e) {
-		this.estratega.update();
 		this.getRobotStrategy().onHitWall(e);
 	}
 }

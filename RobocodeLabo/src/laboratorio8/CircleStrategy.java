@@ -10,24 +10,15 @@ import static robocode.util.Utils.normalRelativeAngleDegrees;
 public class CircleStrategy extends RobotStrategy {
     private int dist = 50; // distance to move when we're hit
 
+    private static CircleStrategy instance = new CircleStrategy();
 
-
-    /*
-    private static CircleStrategy instance = null;
-
-    private CircleStrategy (){
-        instance = new CircleStrategy();
+    private CircleStrategy () {
     }
 
-    public static CircleStrategy getInstance() {
-        if (instance == null) {
-            return new CircleStrategy();
-        }
-        else {
-            return instance;
-        }
+    static CircleStrategy getInstance() {
+      return instance;
     }
-*/
+
     public void run() {
 
         this.robot.setTurnRight(100);
