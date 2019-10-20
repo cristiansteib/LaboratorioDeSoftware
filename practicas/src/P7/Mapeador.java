@@ -9,10 +9,7 @@ import static java.lang.Class.forName;
 
 public class Mapeador {
 
-    public static void main(String[] args) {
-
-        String className = (args.length > 0) ? args[0] : "P7.Bean";
-
+    public void mapear(String className) {
         try {
             Class<?> classToMap = forName(className);
             String fileName;
