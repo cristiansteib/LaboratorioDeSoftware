@@ -30,14 +30,16 @@ public class TestCorredor {
                     try {
                         System.out.println("RESULTADO POR PARAMETRO: ");
                         System.out.println(resultado.get());
-                        resultado.cancel(false);
-                        toRemove.add(resultado);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
+                    } catch (ThreadDeath e){
+                        e.printStackTrace();
                     }
+                    toRemove.add(resultado);
                 }
+
             }
             results.removeAll(toRemove);
         }
