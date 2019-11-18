@@ -1,21 +1,19 @@
 package laboratorio.practica.modelo;
 
-public class RecursoWeb {
+public abstract class RecursoWeb {
 
     private Integer id;
     private String nombre;
     private String url;
     private String comentario;
-    private TipoRecurso tipoRecurso;
 
 
-    public RecursoWeb(Integer id, String nombre, String url, String comentario, TipoRecurso tipoRecurso) {
+    public RecursoWeb(Integer id, String nombre, String url, String comentario) {
         super();
         this.id = id;
         this.nombre = nombre;
         this.url = url;
         this.comentario = comentario;
-        this.tipoRecurso = tipoRecurso;
     }
 
     public Integer getId() {
@@ -56,11 +54,6 @@ public class RecursoWeb {
         return nombre + " : " + url;
     }
 
-    public TipoRecurso getTipoRecurso() {
-        return tipoRecurso;
-    }
 
-    public void setTipoRecurso(TipoRecurso tipoRecurso) {
-        this.tipoRecurso = tipoRecurso;
-    }
+    public abstract int getIcon();
 }

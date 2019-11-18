@@ -18,11 +18,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import laboratorio.practica.adapters.MiAdaptadorConIcono;
 import laboratorio.practica.modelo.RecursoWeb;
-import laboratorio.practica.modelo.TipoRecurso;
+import laboratorio.practica.modelo.RecursoWebAudio;
+import laboratorio.practica.modelo.RecursoWebImagen;
+import laboratorio.practica.modelo.RecursoWebSitioWeb;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private RecursoWeb[] values;
+    private RecursoWeb[] resources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +37,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        values = new RecursoWeb[]{
-                new RecursoWeb(0, "Fantasma", "http://www.sonidosmp3gratis.com/sounds/ruido_1.mp3", "Ruido fantasmagórico", TipoRecurso.AUDIO),
-                new RecursoWeb(0, "Campanas", "http://www.sonidosmp3gratis.com/sounds/campanas_3.mp3", "Sonido de camapandas", TipoRecurso.AUDIO),
-                new RecursoWeb(0, "Instagram", "http://www.instagram.com", "Sitio Oficial de Instagram", TipoRecurso.SITIO_WEB),
-                new RecursoWeb(0, "Guitarra", "https://d1aeri3ty3izns.cloudfront.net/media/44/448686/1200/preview.jpg", "Guitarra PRS", TipoRecurso.IMAGEN)
+        resources = new RecursoWeb[]{
+                new RecursoWebAudio(0, "Fantasma", "http://www.sonidosmp3gratis.com/sounds/ruido_1.mp3", "Ruido fantasmagórico"),
+                new RecursoWebAudio(0, "Campanas", "http://www.sonidosmp3gratis.com/sounds/campanas_3.mp3", "Sonido de camapandas"),
+                new RecursoWebSitioWeb(0, "Instagram", "http://www.instagram.com", "Sitio Oficial de Instagram"),
+                new RecursoWebImagen(0,"Guitarra", "https://d1aeri3ty3izns.cloudfront.net/media/44/448686/1200/preview.jpg", "Guitarra PRS"),
+                new RecursoWebImagen(0,"Otra guitarra", "https://d1aeri3ty3izns.cloudfront.net/media/44/448686/1200/preview.jpg", "Guitarra PRS")
 
         };
 
         this.setListView((ListView) this.findViewById(R.id.listaRecursos));
 
-        MiAdaptadorConIcono adapter = new MiAdaptadorConIcono( this, values);
+        MiAdaptadorConIcono adapter = new MiAdaptadorConIcono( this, resources);
         this.getListView().setAdapter(adapter);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String shareBody = "";
-                for (RecursoWeb value:values){
+                for (RecursoWeb value:resources){
                     shareBody = shareBody.concat(value.toString()).concat("\n");
                 }
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
