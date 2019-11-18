@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Agenda de Recursos Web</string>
     <string name="action_settings">Settings</string>
+    <string name="button_share">Share</string>
+    <string name="share_using">usar para compartir</string>
 </resources>

@@ -53,7 +53,7 @@ public class RecursoWeb {
     @Override
     public String toString() {
 
-        return tipoRecurso+"  -  "+nombre;
+        return nombre + " : " + url;
     }
 
     public TipoRecurso getTipoRecurso() {

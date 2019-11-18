@@ -10,8 +10,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import laboratorio.practica.adapters.MiAdaptadorConIcono;
 import laboratorio.practica.modelo.RecursoWeb;
@@ -25,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final FloatingActionButton button = findViewById(R.id.floatingActionButton2);
+;
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
-
         this.setListView((ListView) this.findViewById(R.id.listaRecursos));
-        //this.getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        //this.getListView().setAdapter(new ArrayAdapter<RecursoWeb>(this, android.R.layout.simple_list_item_single_choice, android.R.id.text1, values));
 
         MiAdaptadorConIcono adapter = new MiAdaptadorConIcono( this, values);
         this.getListView().setAdapter(adapter);
@@ -55,8 +59,37 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        // Callback de floatingButton para compartir los recursos.
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String shareBody = "";
+                for (RecursoWeb value:values){
+                    shareBody = shareBody.concat(value.toString()).concat("\n");
+                }
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Sharing multimedia resources");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
+            }
+        });
+
     }
 
+    private View.OnClickListener btnListener = new View.OnClickListener()
+    {
+
+        public void onClick(View v)
+        {
+            //Intent newPicIntent = new Intent(v.getContext(), NewPictureActivity.class);
+            //startActivityForResult(newPicIntent, 0);
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, 999);
+        }
+
+    };
 
     public ListView getListView() {
         return listView;
